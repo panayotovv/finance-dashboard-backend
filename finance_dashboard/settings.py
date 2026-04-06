@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'transactions',
     'users',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -116,10 +117,23 @@ USE_I18N = True
 USE_TZ = True
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # 6379 is default Redis port
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_THROTTLE_RATES': {
+        'register': '3/min',
+    }
 }
 
 SIMPLE_JWT = {

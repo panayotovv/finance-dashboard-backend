@@ -1,14 +1,20 @@
 from rest_framework import serializers
+
+from transactions.helpers import time_ago
 from transactions.models import Transaction, Category
 from users.models import Profile
 from django.contrib.auth.models import User
 
 
 class TransactionSerializer(serializers.ModelSerializer):
+    time = serializers.SerializerMethodField()
     category = serializers.StringRelatedField()
     class Meta:
         model = Transaction
         fields = '__all__'
+
+    def get_time(self, obj):
+        return time_ago(obj.created_at)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -20,8 +26,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = '__all__'
-
+        fields = ['avatar']
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
