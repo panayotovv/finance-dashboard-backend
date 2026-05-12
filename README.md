@@ -27,10 +27,10 @@ Track your spending through charts and summaries.
 Monitor monthly activity to improve budgeting.
 ## 🖥️ Screenshots
 
-![App Screenshot](src/screenshots/dashboard.png)
-![App Screenshot](src/screenshots/sign_up.png)
-![App Screenshot](src/screenshots/add_transaction.png)
-![App Screenshot](src/screenshots/all_transactions.png)
+![App Screenshot](screenshots/dashboard.png)
+![App Screenshot](screenshots/sign_up.png)
+![App Screenshot](screenshots/add_transaction.png)
+![App Screenshot](screenshots/all_transactions.png)
 
 ## 🔗 Repositories
 - Backend — https://github.com/panayotovv/finance-dashboard-frontend
